@@ -1,0 +1,30 @@
+CREATE TABLE Hospital (
+  id      INT NOT NULL AUTO_INCREMENT,
+  name    VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE Patient (
+  id            INT NOT NULL AUTO_INCREMENT,
+  first_name    VARCHAR(255) NOT NULL,
+  last_name     VARCHAR(255) NOT NULL,
+  hospital_id   INT,
+  PRIMARY KEY (id),
+  FOREIGN KEY (hospital_id) REFERENCES Hospital (id)
+);
+
+LOAD DATA LOCAL INFILE './hospitals.csv'
+INTO TABLE Hospital 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA LOCAL INFILE './patients.csv'
+INTO TABLE Patient 
+FIELDS TERMINATED BY ',' 
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+

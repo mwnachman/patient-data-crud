@@ -1,0 +1,8 @@
+# Dependency directories
+app/node_modules/
+
+# Built code
+app/src/build/
+
+# Configuration
+app/config.json
